@@ -5,6 +5,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="app.css" rel="stylesheet">
         <title>Al Hours!</title>
     </head>
     <body>
@@ -12,9 +13,11 @@
         <h1>Hours this week!</h1>
       </div>
       <div class="page-header text-center">
-        <h1><%= @hours %></h1>
+        <h1 id="currentHours"><%= @hours %></h1>
       </div>
+        <button id="resetButton" type="button" class="btn btn-warning btn-block btn-large resetButton">Reset</button>
     </body>
-    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
 </html>
