@@ -2,7 +2,9 @@ require 'bundler'
 Bundler.require
 
 get "/" do
-  "INDEX WILL LIVE HERE"
+  redis = Redis.new(:host => "127.0.0.1", :port => 6379)
+  @hours = redis.get("hours") || 0
+  erb :index
 end
 
 get "/hours" do
