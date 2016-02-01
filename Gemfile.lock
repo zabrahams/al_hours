@@ -1,8 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    erubis (2.7.0)
-    hiredis (0.6.1)
+    json (1.8.3)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -17,7 +16,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  erubis
-  hiredis
+  json
   redis
   sinatra
