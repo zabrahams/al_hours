@@ -13,9 +13,17 @@
         <h1>Hours this week!</h1>
       </div>
       <div class="page-header text-center">
-        <h1 id="currentHours"><%= @hours %></h1>
+        <h1 id="currentHours"></h1>
+        <h1 id="currentPay"></h1>
       </div>
-        <button id="resetButton" type="button" class="btn btn-warning btn-block btn-large resetButton">Reset</button>
+        <button id="resetButton" type="button" class="btn btn-warning btn-block btn-large  hoursButton">Reset</button>
+        <form id="addHours">
+          <div class="form-group text-center text-lg">
+            <label class="hoursLabel" for="hoursToday">Hours Today</label>
+            <input type="text" class="form-control hoursInput text-center" id="hoursToday" placeholder="0">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-large hoursButton">Add Hours</button>
+        </form>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
