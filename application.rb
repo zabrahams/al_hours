@@ -1,29 +1,25 @@
 require 'bundler'
 Bundler.require
 
+require_relative "./hour_service.rb"
+
 get "/" do
-  redis = Redis.new(:host => "127.0.0.1", :port => 6379)
-  @hours = redis.get("hours") || 0.0
   erb :index
 end
 
 get "/hours" do
-  redis = Redis.new(:host => "127.0.0.1", :port => 6379)
-  hours = redis.get("hours") || 0.0
+  hours = HourService.fetch
   { hours: hours }.to_json
 end
 
-put "/hours" do
-  redis = Redis.new(:host => "127.0.0.1", :port => 6379)
-  hours = redis.get("hours")
-  hours ||= 0.0
-  new_hours = hours.to_f +  params["hours"].to_f
-  redis.set("hours", new_hours)
-  { hours: new_hours }.to_json
+post "/hours" do
+  request.body.rewind
+  hours_hash = JSON.parse(request.body.read)
+  HourService.save(hours_hash["hours"])
+  { hours: hours_hash }.to_json
 end
 
 delete "/hours" do
-  redis = Redis.new(:host => "127.0.0.1", :port => 6379)
-  redis.set("hours", 0.0)
-  { hours: 0.0 }.to_json
+  HourService.delete
+  {}.to_json
 end
