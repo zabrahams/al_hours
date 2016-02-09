@@ -14,6 +14,8 @@ end
 
 post "/hours" do
   request.body.rewind
+  puts request.body.read
+  request.body.rewind
   hours_hash = JSON.parse(request.body.read)
   HourService.save(hours_hash["hours"])
   { hours: hours_hash }.to_json

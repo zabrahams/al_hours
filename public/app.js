@@ -1,17 +1,17 @@
-(function () {
+;(function () {
     if (typeof window.Hours === "undefined" ) {
         window.Hours = {};
     }
 
-    Hours.hours = 0;
+    Hours.hours = {};
     Hours.WAGE = 15;
 
     Hours.refresh = function () {
-      $("#currentHours").text(Hours.hours)
+      // $("#currentHours").text(Hours.hours)
     }
 
     Hours.refreshPay = function () {
-      $("#currentPay").text("$" + (Hours.hours * Hours.WAGE))
+      // $("#currentPay").text("$" + (Hours.hours * Hours.WAGE))
     }
 
     Hours.deleteHours = function () {
@@ -40,12 +40,13 @@
       });
     }
 
-    Hours.putHours = function (hoursToAdd) {
+    Hours.postHours = function () {
       $.ajax({
         dataType: 'json',
-        method: "PUT",
+        method: "POST",
         url: "/hours",
-        data: {hours: hoursToAdd},
+        processData: false,
+        data: JSON.stringify(Hours.hours),
         success: function (resp) {
           Hours.hours = resp.hours;
           Hours.refresh();
@@ -62,10 +63,11 @@
         Hours.deleteHours();
       });
 
-      $("#addHours").on("submit", function (e) {
+      $("#addHours").on("submit", function (e, f, g) {
         e.preventDefault();
-        var hoursToAdd = $(e.target[0]).val();
-        Hours.putHours(hoursToAdd)
+        Hours.hours = $("#addHours").serializeJSON();
+
+        Hours.postHours();
       })
     });
 })();
