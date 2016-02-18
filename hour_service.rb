@@ -5,7 +5,7 @@ class HourService
   DATA_FILE = "data/hours.csv"
 
   def self.delete
-    File.delete(DATA_FILE)
+    File.delete(DATA_FILE) if File.exist?(DATA_FILE)
   end
 
   def self.headers
@@ -64,7 +64,7 @@ class HourService
 
   def self.blank_hash
     blank_hash = {}
-    HourService.headers.each { |header| blank_hash[header] = nil }
+    HourService.headers.each { |header| blank_hash[header] = "" }
     HourService.pop_out blank_hash
   end
 

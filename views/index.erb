@@ -11,58 +11,62 @@
     <body>
       <div class="jumbotron text-center">
         <h1>Hours this week!</h1>
+        <%= @hours %>
       </div>
       <div class="page-header text-center">
-        <h1 id="currentHours"></h1>
-        <h1 id="currentPay"></h1>
+        <h1 id="currentHours"><%= @hours['total'] %> hour<%= 's' if @hours['total'] != 1 %></h1>
+        <h1 id="currentPay"><%= @hours['dollars'] %>$</h1>
       </div>
-        <form id="addHours">
+        <form id="addHours" action="/" method="POST">
           <div class="form-group text-center text-lg">
             <h3> Monday</h3>
             <label class="hoursLabel" for="mondayStart">Monday Start</label>
-            <input type="time" name="hours[monday][start]" class="form-control hoursInput text-center" id="mondayStart" placeholder="0">
+            <input type="time" name="hours[monday][start]" class="form-control hoursInput text-center" id="mondayStart" value="<%= @hours['monday']['start'] %>">
             <label class="hoursLabel" for="mondayEnd">Monday End</label>
-            <input type="time" name="hours[monday][end]"class="form-control hoursInput text-center" id="mondayEnd" placeholder="0">
-            <h4> Hours: </h4>
+            <input type="time" name="hours[monday][end]"class="form-control hoursInput text-center" id="mondayEnd" value="<%= @hours['monday']['end'] %>">
+            <h4> Hours: <%= @hours[:monday][:total] %> </h4>
           </div>
           <div class="form-group text-center text-lg">
             <h3> Tuesday</h3>
             <label class="hoursLabel" for="tuesdayStart">Tuesday Start</label>
-            <input type="time" name="hours[tuesday][start]" class="form-control hoursInput text-center" id="tuesdayStart" placeholder="0">
+            <input type="time" name="hours[tuesday][start]" class="form-control hoursInput text-center" id="tuesdayStart" value="<%= @hours['tuesday']['start'] %>">
             <label class="hoursLabel" for="tuesdayEnd">Tuesday End</label>
-            <input type="time" name="hours[tuesday][end]"class="form-control hoursInput text-center" id="tuesdayEnd" placeholder="0">
-            <h4> Hours: </h4>
+            <input type="time" name="hours[tuesday][end]"class="form-control hoursInput text-center" id="tuesdayEnd" value="<%= @hours['tuesday']['end'] %>">
+            <h4> Hours: <%= @hours[:tuesday][:total] %> </h4>
           </div>
           <div class="form-group text-center text-lg">
             <h3> Wednesday</h3>
             <label class="hoursLabel" for="wednesdayStart">Wednesday Start</label>
-            <input type="time" name="hours[wednesday][start]" class="form-control hoursInput text-center" id="wednesdayStart" placeholder="0">
+            <input type="time" name="hours[wednesday][start]" class="form-control hoursInput text-center" id="wednesdayStart" value="<%= @hours['wednesday']['start'] %>">
             <label class="hoursLabel" for="wednesdayEnd">Wednesday End</label>
-            <input type="time" name="hours[wednesday][end]"class="form-control hoursInput text-center" id="wednesdayEnd" placeholder="0">
-            <h4> Hours: </h4>
+            <input type="time" name="hours[wednesday][end]"class="form-control hoursInput text-center" id="wednesdayEnd" value="<%= @hours['wednesday']['end'] %>">
+            <h4> Hours: <%= @hours[:wednesday][:total] %> </h4>
           </div>
           <div class="form-group text-center text-lg">
             <h3> Thursday</h3>
             <label class="hoursLabel" for="thursdayStart">Thursday Start</label>
-            <input type="time" name="hours[thursday][start]" class="form-control hoursInput text-center" id="thursdayStart" placeholder="0">
+            <input type="time" name="hours[thursday][start]" class="form-control hoursInput text-center" id="thursdayStart" value="<%= @hours['thursday']['start'] %>">
             <label class="hoursLabel" for="thursdayEnd">Thursday End</label>
-            <input type="time" name="hours[thursday][end]" class="form-control hoursInput text-center" id="thursdayEnd" placeholder="0">
-            <h4> Hours: </h4>
+            <input type="time" name="hours[thursday][end]" class="form-control hoursInput text-center" id="thursdayEnd" value="<%= @hours['thursday']['end'] %>">
+            <h4> Hours: <%= @hours[:thursday][:total] %> </h4>
           </div>
           <div class="form-group text-center text-lg">
             <h3> Friday</h3>
             <label class="hoursLabel" for="fridayStart">Friday Start</label>
-            <input type="time" name="hours[friday][start]" class="form-control hoursInput text-center" id="fridayStart" placeholder="0">
+            <input type="time" name="hours[friday][start]" class="form-control hoursInput text-center" id="fridayStart" value="<%= @hours['friday']['start'] %>">
             <label class="hoursLabel" for="fridayEnd">Friday End</label>
-            <input type="time" name="hours[friday][end]"  class="form-control hoursInput text-center" id="fridayEnd" placeholder="0">
-            <h4> Hours: </h4>
+            <input type="time" name="hours[friday][end]"  class="form-control hoursInput text-center" id="fridayEnd" value="<%= @hours['friday']['end'] %>">
+            <h4> Hours: <%= @hours[:friday][:total] %></h4>
           </div>
+          <input>
           <button type="submit" class="btn btn-primary btn-block btn-large hoursButton">Add Hours</button>
         </form>
-        <button id="resetButton" type="button" class="btn btn-warning btn-block btn-large  hoursButton">Reset</button>
+        <form action="/" method="post">
+          <input name="_method" type="hidden" value="delete" />
+          <button id="resetButton" type="submit" class="btn btn-warning btn-block btn-large hoursButton">Reset</button>
+        </form>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/jquery.serializejson.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="app.js"></script>
 </html>
