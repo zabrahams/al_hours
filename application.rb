@@ -8,6 +8,7 @@ RATE = 15
 get "/" do
   raw_hours = HourService.fetch
   @hours = decorate raw_hours
+  p @hours
   erb :index
 end
 
@@ -24,8 +25,6 @@ delete "/" do
 end
 
 def decorate  hours
-  decorated_hours = hours.dup
-
   hours.keys.each do |key|
     start = hours[key]["start"]
     fin = hours[key]["end"]

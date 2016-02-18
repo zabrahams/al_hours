@@ -24,7 +24,7 @@
             <input type="time" name="hours[monday][start]" class="form-control hoursInput text-center" id="mondayStart" value="<%= @hours['monday']['start'] %>">
             <label class="hoursLabel" for="mondayEnd">Monday End</label>
             <input type="time" name="hours[monday][end]"class="form-control hoursInput text-center" id="mondayEnd" value="<%= @hours['monday']['end'] %>">
-            <h4> Hours: <%= @hours[:monday][:total] %> </h4>
+            <h4> Hours: <%= @hours["monday"]["total"] %> </h4>
           </div>
           <div class="form-group text-center text-lg">
             <h3> Tuesday</h3>
@@ -32,7 +32,7 @@
             <input type="time" name="hours[tuesday][start]" class="form-control hoursInput text-center" id="tuesdayStart" value="<%= @hours['tuesday']['start'] %>">
             <label class="hoursLabel" for="tuesdayEnd">Tuesday End</label>
             <input type="time" name="hours[tuesday][end]"class="form-control hoursInput text-center" id="tuesdayEnd" value="<%= @hours['tuesday']['end'] %>">
-            <h4> Hours: <%= @hours[:tuesday][:total] %> </h4>
+            <h4> Hours: <%= @hours["tuesday"]["total"] %> </h4>
           </div>
           <div class="form-group text-center text-lg">
             <h3> Wednesday</h3>
@@ -40,7 +40,7 @@
             <input type="time" name="hours[wednesday][start]" class="form-control hoursInput text-center" id="wednesdayStart" value="<%= @hours['wednesday']['start'] %>">
             <label class="hoursLabel" for="wednesdayEnd">Wednesday End</label>
             <input type="time" name="hours[wednesday][end]"class="form-control hoursInput text-center" id="wednesdayEnd" value="<%= @hours['wednesday']['end'] %>">
-            <h4> Hours: <%= @hours[:wednesday][:total] %> </h4>
+            <h4> Hours: <%= @hours["wednesday"]["total"] %> </h4>
           </div>
           <div class="form-group text-center text-lg">
             <h3> Thursday</h3>
@@ -48,7 +48,7 @@
             <input type="time" name="hours[thursday][start]" class="form-control hoursInput text-center" id="thursdayStart" value="<%= @hours['thursday']['start'] %>">
             <label class="hoursLabel" for="thursdayEnd">Thursday End</label>
             <input type="time" name="hours[thursday][end]" class="form-control hoursInput text-center" id="thursdayEnd" value="<%= @hours['thursday']['end'] %>">
-            <h4> Hours: <%= @hours[:thursday][:total] %> </h4>
+            <h4> Hours: <%= @hours["thursday"]["total"] %> </h4>
           </div>
           <div class="form-group text-center text-lg">
             <h3> Friday</h3>
@@ -56,7 +56,7 @@
             <input type="time" name="hours[friday][start]" class="form-control hoursInput text-center" id="fridayStart" value="<%= @hours['friday']['start'] %>">
             <label class="hoursLabel" for="fridayEnd">Friday End</label>
             <input type="time" name="hours[friday][end]"  class="form-control hoursInput text-center" id="fridayEnd" value="<%= @hours['friday']['end'] %>">
-            <h4> Hours: <%= @hours[:friday][:total] %></h4>
+            <h4> Hours: <%= @hours["friday"]["total"] %></h4>
           </div>
           <input>
           <button type="submit" class="btn btn-primary btn-block btn-large hoursButton">Add Hours</button>
