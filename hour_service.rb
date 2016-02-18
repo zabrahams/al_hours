@@ -17,7 +17,9 @@ class HourService
   end
 
   def self.save hours_hash
-    File.write(DATA_FILE, hours_hash.to_json )
+    File.open(DATA_FILE, "wb") do |f|
+      f.write(hours_hash.to_json)
+    end
   end
 
   def self.blank_hash
