@@ -8,7 +8,6 @@ RATE = 15
 get "/" do
   raw_hours = HourService.fetch
   @hours = decorate raw_hours
-  p @hours
   erb :index
 end
 
